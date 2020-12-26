@@ -28,7 +28,7 @@ class CampsiteInfo extends Component {
                             <div key = {comment.id}>
                                 <p>{comment.text}
                                 <br/>
-                                {comment.author} - {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
+                                -- {comment.author} - {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
                                 </p>
                             </div>
                         )
@@ -39,22 +39,7 @@ class CampsiteInfo extends Component {
             <div></div>
         )
     }
-
-    /*   const directory = this.props.campsites.map(campsite => {
-            return (
-                <div key={campsite.id} className="col-md-5 m-1">
-                    <Card onClick={() => this.onCampsiteSelect(campsite)}>
-                        <CardImg width="100%" src={campsite.image} alt={campsite.name}/>
-                        <CardImgOverlay>
-                            <CardTitle>{campsite.name}</CardTitle>
-                        </CardImgOverlay>
-                    </Card>
-                       
-                </div>
-            );
-        } )*/
-    
-  
+      
    render () {
        if(this.props.selectedCamp) {
            return(
