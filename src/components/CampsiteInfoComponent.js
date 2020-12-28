@@ -1,24 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Card, CardImg, CardText,CardBody, CardTitle} from 'reactstrap'
 
+function RenderCampsite({campsite}) {
+    return (
+        <div className="col-md-5 m-1">
+             <Card>
+                <CardImg top src={campsite.image} alt={campsite.name} />
+                <CardBody>
+                    <CardTitle>{campsite.name}</CardTitle>
+                    <CardText>{campsite.description}</CardText>
+                </CardBody>
+            </Card>
+        </div>
+    )
+}
 
-class CampsiteInfo extends Component {
-  
-    renderCampsite (campsite) {
-        return (
-            <div className="col-md-5 m-1">
-                 <Card>
-                    <CardImg top src={campsite.image} alt={campsite.name} />
-                    <CardBody>
-                        <CardTitle>{campsite.name}</CardTitle>
-                        <CardText>{campsite.description}</CardText>
-                    </CardBody>
-                </Card>
-            </div>
-        )
-    }
-
-    renderComments(comments) {
+   function RenderComments({comments}) {
         if(comments) {
             return(
                 <div className="col-md-5 m-1">
@@ -40,13 +37,13 @@ class CampsiteInfo extends Component {
         )
     }
       
-   render () {
-       if(this.props.selectedCamp) {
+   function CampsiteInfo(props) {
+       if(props.selectedCamp) {
            return(
                <div className='container'>
                     <div className='row'>
-                     {this.renderCampsite(this.props.selectedCamp)}
-                     {this.renderComments(this.props.selectedCamp.comments)}
+                        <RenderCampsite campsite = {props.selectedCamp} />
+                        <RenderComments comments = {props.selectedCamp.comments} />
                     </div>
                </div>
                
@@ -59,6 +56,5 @@ class CampsiteInfo extends Component {
        
    }
        
-}
 
 export default CampsiteInfo
